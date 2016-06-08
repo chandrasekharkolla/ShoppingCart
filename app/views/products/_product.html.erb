@@ -1,6 +1,6 @@
 <tr>
 	<td><%= product.title %></td>
-	<td><%= product.description %></td>
+	<td><%= truncate(strip_tags(product.description), length: 60) %></td>
 	<td><%= sprintf("$%0.02f", product.price) %></td>
 	<td>
 		<%= link_to "Show", product, class: 'btn btn-info' %>

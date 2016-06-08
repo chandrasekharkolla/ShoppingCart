@@ -15,11 +15,16 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(product_params)
 
-		if @product.save
-			flash[:success] = "Product has been added successfully to the database"
-			redirect_to root_url
-		else
-			render 'new'
+		respond_to do |format|
+			if @product.save
+				# flash[:success] = "Product has been added successfully to the database"
+				# redirect_to root_url
+				format.html { redirect_to @product, notice: 'Product has been added successfully to the database.' }
+        		format.json { render :show, status: :created, location: @product }
+			else
+				format.html { render :new }
+        		format.json { render json: @product.errors, status: :unprocessable_entity }
+        	end
 		end
 	end
 
@@ -30,12 +35,22 @@ class ProductsController < ApplicationController
 	def update
 		@product = Product.find(params[:id])
 
-		if @product.update_attributes(product_params)
-			flash[:success] = "Product has been updated successfully"
-			redirect_to root_url
-		else
-			render 'edit'
-		end
+		# if @product.update_attributes(product_params)
+		# 	flash[:success] = "Product has been updated successfully"
+		# 	redirect_to root_url
+		# else
+		# 	render 'edit'
+		# end
+
+		respond_to do |format|
+	      if @product.update_attributes(product_params)
+	        format.html { redirect_to @product, notice: 'Product has been updated successfully.' }
+	        format.json { render :show, status: :ok, location: @product }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: @product.errors, status: :unprocessable_entity }
+	      end
+	    end
 	end
 
 	def destroy

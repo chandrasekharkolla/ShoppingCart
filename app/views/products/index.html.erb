@@ -1,15 +1,17 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<p><%= link_to "Add new product", new_product_path, class: 'btn btn-primary active' %></p>
+			<div class="text-center">
+				<p><%= link_to "Add new product", new_product_path, class: 'btn btn-primary active' %></p>
+			</div>
 			<h1 class="text-center">Products</h1>
-			<table class="table table-responsive table-bordered table-rounded table-hover">
+			<table class="table table-responsive table-hover">
 				<thead>
 					<tr>
-						<td class="text-center">Title</td>
-						<td class="text-center">Description</td>
-						<td class="text-center">Price</td>
-						<td class="text-center">Actions</td>
+						<td class="text-center"><strong>Title</strong></td>
+						<td class="text-center"><strong>Description</strong></td>
+						<td class="text-center"><strong>Price</strong></td>
+						<td class="text-center"><strong>Actions</strong></td>
 					</tr>
 				</thead>
 				<tbody>

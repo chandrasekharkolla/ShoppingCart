@@ -1,1 +1,10 @@
-<%= @product.title %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 jumbotron text-center">
+			<h3><%= @product.title %></h3>
+			<%= image_tag @product.image.url(:medium), class: 'img img-thumbnail' %>
+			<h5><%= sprintf("$%0.02f", @product.price) %></h5>
+			<p><%= @product.description %></p>
+		</div>
+	</div>
+</div>
